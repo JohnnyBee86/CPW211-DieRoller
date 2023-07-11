@@ -8,6 +8,19 @@ namespace DieRoller
 	public class Die
 	{
 		/// <summary>
+		/// Creates shared random object
+		/// </summary>
+		private static Random _random;
+
+		/// <summary>
+		/// attaches random to the die object
+		/// </summary>
+		static Die()
+		{
+			_random = new Random();
+		}
+
+		/// <summary>
 		/// Creates the die and rolls it to start with a random number
 		/// </summary>
         public Die()
@@ -36,8 +49,7 @@ namespace DieRoller
 			if (!IsHeld)
 			{
 				// Generate random number
-				Random random = new();
-				byte newValue = (byte)random.Next(1, 7);
+				byte newValue = (byte)_random.Next(1, 7);
 
 
 				FaceValue = newValue;
